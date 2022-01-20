@@ -2,6 +2,4 @@
 
 # frozen_string_literal: true
 
-suffix = :linux_x86
-
-exec(*ARGV.unshift("#{__FILE__}_#{suffix}"))
+exec(*ARGV.unshift("#{__FILE__}-bin/emlunpack"))
