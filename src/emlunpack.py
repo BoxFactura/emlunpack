@@ -6,9 +6,8 @@ import base64
 import datetime
 import email.header
 import pathlib
-
 import eml_parser
-
+from pathvalidate import sanitize_filename
 
 def json_serial(obj):
     """JSON serializer for objects not serializable by default json code"""
@@ -53,7 +52,7 @@ def main():
 
             if 'attachment' in m:
                 for a in m['attachment']:
-                    out_filepath = out_path / a['filename']
+                    out_filepath = out_path / sanitize_filename(a['filename'])
 
                     print(f'\tWriting attachment: {out_filepath}')
                     with out_filepath.open('wb') as a_out:
